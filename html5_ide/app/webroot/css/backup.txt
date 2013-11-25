@@ -1,0 +1,40 @@
+#code_bits_menu ul{
+margin: 0;
+padding: 0;
+list-style-type: none;
+width: 160px; /* Width of Menu Items */
+border-bottom: 1px solid #C00000;
+}
+#code_bits_menu ul li{
+position: relative;
+}
+/*Sub level menu items */
+#code_bits_menu ul li ul{
+position: absolute;
+width: 180px; /*sub menu width*/
+top: 0;
+visibility: hidden;
+}
+/* Sub level menu links style */
+#code_bits_menu ul li a{
+display: block;
+overflow: auto; /*force hasLayout in IE7 */
+color: #333399;
+text-decoration: none;
+background: #F9F9FF;
+padding: 1px 5px;
+border: 1px solid #C00000;   
+border-bottom: 0;
+}
+#code_bits_menu ul li a:visited{
+color: #333399;
+}
+#code_bits_menu ul li a:hover{
+background-color: #333399;
+}
+#code_bits_menu ul li a:hover{
+color: #FFFFFF;
+}
+#code_bits_menu .subfolderstyle{
+background: #F9F9FF;
+}

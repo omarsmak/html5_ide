@@ -1,0 +1,185 @@
+[2011-12-24 17:05:16] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `id` = 13 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:05:16] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:05:16] nf: no result set <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:05:16] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `left` <= 0 AND `right` >= 0 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:05:16] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:05:50] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `id` = 13 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:05:50] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:05:50] nf: no result set <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:05:50] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `left` <= 0 AND `right` >= 0 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:05:50] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:06:10] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `id` = 13 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:06:10] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:06:10] nf: no result set <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:06:10] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `left` <= 0 AND `right` >= 0 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:06:10] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:11:50] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `id` = 13 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:11:50] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:11:50] nf: no result set <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:11:50] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `left` <= 0 AND `right` >= 0 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:11:50] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:13:08] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `id` = 13 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:13:08] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:13:08] nf: no result set <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:13:08] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `left` <= 0 AND `right` >= 0 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:13:08] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:15:49] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `id` = 0 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:15:49] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:15:49] nf: no result set <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:15:49] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `left` <= 0 AND `right` >= 0 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:15:49] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:16:11] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `id` = 13 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:16:11] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:16:11] nf: no result set <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:16:11] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `left` <= 0 AND `right` >= 0 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:16:11] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:16:26] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `id` = 13 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:16:26] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:16:26] nf: no result set <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:16:26] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `left` <= 0 AND `right` >= 0 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:16:26] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:17:35] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `id` = 13 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:17:35] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:17:35] nf: no result set <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:17:35] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `left` <= 0 AND `right` >= 0 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:17:35] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:26:24] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `id` = 13 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:26:24] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:26:24] nf: no result set <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:26:24] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `left` <= 0 AND `right` >= 0 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:26:24] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:45:13] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `id` = 3 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:45:13] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:45:13] nf: no result set <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:45:13] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `left` <= 0 AND `right` >= 0 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:45:13] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:47:03] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `id` = 3 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:47:03] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:47:03] nf: no result set <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:47:31] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `id` = 3 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:47:31] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:47:31] nf: no result set <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:47:31] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` FROM `tree` WHERE `left` <= 0 AND `right` >= 0 <Table 'html5_ide.tree' doesn't exist>
+[2011-12-24 17:47:31] No query pending <Table 'html5_ide.tree' doesn't exist>
+[2012-01-31 22:37:34] select title from tree_files where id =  limit 1 <You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'limit 1' at line 1>
+[2012-01-31 22:37:34] No query pending <You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'limit 1' at line 1>
+[2012-02-02 18:57:46] Connection error: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) <>
+[2012-02-02 18:57:46] Could node connect for query: select id from tree_files where project_id=46 and type='' limit 1 <>
+[2012-02-02 18:57:46] No query pending <>
+[2012-02-02 18:57:46] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `id` = 0 <>
+[2012-02-02 18:57:46] No query pending <>
+[2012-02-02 18:57:46] nf: no result set <>
+[2012-02-02 18:57:46] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `parent_id` = 0 ORDER BY `position` ASC <>
+[2012-02-02 18:57:46] No query pending <>
+[2012-02-02 18:57:58] Connection error: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) <>
+[2012-02-02 18:57:58] Could node connect for query: select id from tree_files where project_id=46 and type='' limit 1 <>
+[2012-02-02 18:57:58] No query pending <>
+[2012-02-02 18:57:58] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `id` = 0 <>
+[2012-02-02 18:57:58] No query pending <>
+[2012-02-02 18:57:58] nf: no result set <>
+[2012-02-02 18:57:58] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `parent_id` = 0 ORDER BY `position` ASC <>
+[2012-02-02 18:57:58] No query pending <>
+[2012-02-02 18:58:19] Connection error: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) <>
+[2012-02-02 18:58:19] Could node connect for query: select id from tree_files where project_id=44 and type='' limit 1 <>
+[2012-02-02 18:58:19] No query pending <>
+[2012-02-02 18:58:19] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `id` = 0 <>
+[2012-02-02 18:58:19] No query pending <>
+[2012-02-02 18:58:19] nf: no result set <>
+[2012-02-02 18:58:19] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `parent_id` = 0 ORDER BY `position` ASC <>
+[2012-02-02 18:58:19] No query pending <>
+[2012-02-02 18:58:29] Connection error: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) <>
+[2012-02-02 18:58:29] Could node connect for query: INSERT INTO `tree_files` (
+                `id` ,
+                `parent_id` ,
+                `position` ,
+                `left` ,
+                `right` ,
+                `level` ,
+                `title` ,
+                `type` ,
+                `path` ,
+                `project_id`
+                )
+                VALUES (
+                NULL , '0', '0', '0', '0', '0', 'Workplace', '', '', '48'
+                ); <>
+[2012-02-02 18:58:29] select max(id) from tree_files <>
+[2012-02-02 18:58:29] No query pending <>
+[2012-02-02 18:58:29] Connection error: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) <>
+[2012-02-02 18:58:29] Could node connect for query: SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `id` = 0 <>
+[2012-02-02 18:58:29] No query pending <>
+[2012-02-02 18:58:29] nf: no result set <>
+[2012-02-02 18:58:29] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `id` = 0 <>
+[2012-02-02 18:58:29] No query pending <>
+[2012-02-02 18:58:37] Connection error: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) <>
+[2012-02-02 18:58:37] Could node connect for query: select id from tree_files where project_id=48 and type='' limit 1 <>
+[2012-02-02 18:58:37] No query pending <>
+[2012-02-02 18:58:37] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `id` = 0 <>
+[2012-02-02 18:58:37] No query pending <>
+[2012-02-02 18:58:37] nf: no result set <>
+[2012-02-02 18:58:37] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `parent_id` = 0 ORDER BY `position` ASC <>
+[2012-02-02 18:58:37] No query pending <>
+[2012-02-02 18:59:02] Connection error: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) <>
+[2012-02-02 18:59:02] Could node connect for query: select id from tree_files where project_id=48 and type='' limit 1 <>
+[2012-02-02 18:59:02] No query pending <>
+[2012-02-02 18:59:02] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `id` = 0 <>
+[2012-02-02 18:59:02] No query pending <>
+[2012-02-02 18:59:02] nf: no result set <>
+[2012-02-02 18:59:02] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `parent_id` = 0 ORDER BY `position` ASC <>
+[2012-02-02 18:59:02] No query pending <>
+[2012-02-02 18:59:59] Connection error: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) <>
+[2012-02-02 18:59:59] Could node connect for query: select id from tree_files where project_id=48 and type='' limit 1 <>
+[2012-02-02 18:59:59] No query pending <>
+[2012-02-02 18:59:59] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `id` = 0 <>
+[2012-02-02 18:59:59] No query pending <>
+[2012-02-02 18:59:59] nf: no result set <>
+[2012-02-02 18:59:59] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `parent_id` = 0 ORDER BY `position` ASC <>
+[2012-02-02 18:59:59] No query pending <>
+[2012-02-02 19:01:13] Connection error: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) <>
+[2012-02-02 19:01:13] Could node connect for query: select id from tree_files where project_id=48 and type='' limit 1 <>
+[2012-02-02 19:01:13] No query pending <>
+[2012-02-02 19:01:13] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `id` = 0 <>
+[2012-02-02 19:01:13] No query pending <>
+[2012-02-02 19:01:13] nf: no result set <>
+[2012-02-02 19:01:13] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `parent_id` = 0 ORDER BY `position` ASC <>
+[2012-02-02 19:01:13] No query pending <>
+[2012-02-02 19:03:12] Connection error: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) <>
+[2012-02-02 19:03:12] Could node connect for query: select id from tree_files where project_id=48 and type='' limit 1 <>
+[2012-02-02 19:03:12] No query pending <>
+[2012-02-02 19:03:12] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `id` = 0 <>
+[2012-02-02 19:03:12] No query pending <>
+[2012-02-02 19:03:12] nf: no result set <>
+[2012-02-02 19:03:12] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `parent_id` = 0 ORDER BY `position` ASC <>
+[2012-02-02 19:03:12] No query pending <>
+[2012-02-02 19:04:07] Connection error: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) <>
+[2012-02-02 19:04:07] Could node connect for query: select id from tree_files where project_id=48 and type='' limit 1 <>
+[2012-02-02 19:04:07] No query pending <>
+[2012-02-02 19:04:07] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `id` = 0 <>
+[2012-02-02 19:04:07] No query pending <>
+[2012-02-02 19:04:07] nf: no result set <>
+[2012-02-02 19:04:07] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `parent_id` = 0 ORDER BY `position` ASC <>
+[2012-02-02 19:04:07] No query pending <>
+[2012-02-02 19:04:32] Connection error: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) <>
+[2012-02-02 19:04:32] Could node connect for query: select id from tree_files where project_id=48 and type='' limit 1 <>
+[2012-02-02 19:04:32] No query pending <>
+[2012-02-02 19:04:32] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `id` = 0 <>
+[2012-02-02 19:04:32] No query pending <>
+[2012-02-02 19:04:32] nf: no result set <>
+[2012-02-02 19:04:32] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `parent_id` = 0 ORDER BY `position` ASC <>
+[2012-02-02 19:04:32] No query pending <>
+[2012-02-02 19:05:14] Connection error: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) <>
+[2012-02-02 19:05:14] Could node connect for query: select id from tree_files where project_id=46 and type='' limit 1 <>
+[2012-02-02 19:05:14] No query pending <>
+[2012-02-02 19:05:14] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `id` = 0 <>
+[2012-02-02 19:05:14] No query pending <>
+[2012-02-02 19:05:14] nf: no result set <>
+[2012-02-02 19:05:14] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `parent_id` = 0 ORDER BY `position` ASC <>
+[2012-02-02 19:05:14] No query pending <>
+[2012-02-02 19:05:32] Connection error: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) <>
+[2012-02-02 19:05:32] Could node connect for query: select id from tree_files where project_id=46 and type='' limit 1 <>
+[2012-02-02 19:05:32] No query pending <>
+[2012-02-02 19:05:32] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `id` = 0 <>
+[2012-02-02 19:05:32] No query pending <>
+[2012-02-02 19:05:32] nf: no result set <>
+[2012-02-02 19:05:32] SELECT `id` , `parent_id` , `position` , `left` , `right` , `level` , `title` , `type` , `path` FROM `tree_files` WHERE `parent_id` = 0 ORDER BY `position` ASC <>
+[2012-02-02 19:05:32] No query pending <>

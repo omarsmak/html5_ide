@@ -1,0 +1,72 @@
+/*to do tommorrow 23/DEC
+1- First time load the tree , write a function to check and manipulate the database according to the folder . #FIX : Just maintain the databse same as the folder structure
+2- Second , write small function to delete , add , rename , move files and add them to jstree class .
+3- Try to load the files in such way that can open in the editor (open sourc) .
+
+
+/* to do later 
+1- Once the file managment finish , try to start doing the code bit
+
+
+
+/Notes :
+1- After copy must refresh 
+
+
+
+
+/Done 1st round : 
+
+1- Create files #pass
+2- Create Folders #pass
+3- Delete Files #pass 
+4- Delete Fplders #pass 
+5- Copy Files #pass 
+6- Copy Folders #pass
+7- Move Files #pass 
+8- Move Folders #pass
+9- Rename Files #pass
+10- Rename Folders #pass
+11- Create new project #pass (left defaults files)
+12 - Hashed projects #pass  e.g : http://localhost/main/application/7cf727ecba473253df57ead9cf2e47b8/
+13- Project View #Pass e.g : http://localhost/public/7cf727ecba473253df57ead9cf2e47b8/index.html
+14- Projects can be private and public #pass
+
+
+/Success
+1- Now I can hashed any project : ex.
+www.kkkk.com/workplace/user/hdg77ej/test.html
+Remeber : explode the hash code to get the file name
+
+2- Create a constant path to workplace folder #done
+
+3- Create a hased project like this 
+//authorized
+http://localhost/main/application/:project_hash insted of using project ID #done
+
+4- Create project view   #done
+//open for public
+http://localhost/public/workplace/:project_hash
+
+
+5- Create default ctp* and a contoller to map them #done
+
+/To Do :
+
+1- Automate the creating proccess for the whole project __#done
+2- Move all the files to workplace folder __#done
+3- Link the hash key with the files and folder and figure out a way how to do so . #done
+4- Fix the right , left and position __#done
+5- Load the files contents into the editor #done #done
+6- Open Multiple tabs 
+7- CodeBits section 
+8- We don't want the same file name created (do it later)
+9- Preview File #done
+10- Error msg in case the file is not there
+11- Save file #done
+12- Create the codebits
+
+/Suggestions 
+1- Hash navigationas using jQuery History plugin
+2- In the future use all mapping by the hash key 
+3- Check for file having the same name

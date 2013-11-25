@@ -1,0 +1,45 @@
+/*to do tommorrow 23/DEC
+1- First time load the tree , write a function to check and manipulate the database according to the folder . #FIX : Just maintain the databse same as the folder structure
+2- Second , write small function to delete , add , rename , move files and add them to jstree class .
+3- Try to load the files in such way that can open in the editor (open sourc) .
+
+
+/* to do later 
+1- Once the file managment finish , try to start doing the code bit
+
+
+
+/Notes :
+1- After copy must refresh 
+
+
+
+
+/Done 1st round : 
+
+1- Create files #pass
+2- Create Folders #not yet confirmed
+3- Delete Files #pass 
+4- Delete Fplders #pass 
+5- Copy Files #pass 
+6- Copy Folders #pass
+7- Move Files #pass 
+8- Move Folders #pass
+9- Rename Files #pass
+10- Rename Folders #pass
+
+/Success
+1- Now I can hashed any project : ex.
+www.kkkk.com/workplace/hdg77ej/test.html
+Remeber : explode the hash code to get the file name
+
+2- Create a constant path to workplace folder 
+
+3- Create a hased project like this 
+http://localhost/main/application/kddj4hdh
+
+/To Do :
+
+1- Automate the creating proccess for the whole project
+2- Move all the files to workplace folder 
+3- Link the hash key with the files and folder and figure out a way how to do so .

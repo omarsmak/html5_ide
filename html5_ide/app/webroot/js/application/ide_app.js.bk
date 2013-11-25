@@ -1,0 +1,312 @@
+(function ($){
+    
+    
+    //Models ********************************************************************
+    
+    
+    
+    window.Project = Backbone.Model.extend({
+        
+        defaults : {
+          state : "collapsed"
+        },
+        
+        initialize : function(){
+            this.files = new Files ;
+            //this.files.url = "rest/operations/files/0.json";
+            this.files.url = this.get("project_id")+"/rest/operations/files/0.json";
+            //this.files.fetch();
+        } , 
+        
+        isCollapsed : function (){
+            return (this.get("state") === "collapsed");
+        },
+        
+        isExpanded : function(){
+            return (!this.isCollapsed());
+        },
+        
+        collapse : function(){
+            this.set({
+                'state' : 'collapsed'
+            });
+        },
+        
+        expand : function(){
+            this.set({
+                'state' : 'expanded'
+            });
+        }
+        
+        
+        
+    });
+    
+    
+    
+     window.File = Backbone.Model.extend({
+        
+        
+        defaults : {
+          state : "collapsed" ,
+        },
+        
+        initialize : function(){
+            
+            //if(this.isItHasChild() && this.isItFolder()){  //check the child from the server
+            if(this.isItFolder()){
+                //means has files as child
+                this.files = new Files ; 
+                //this.files.url = "rest/operations/files/"+this.get("file_id")+".json";
+                //this.files.url = this.get("project_id")+"/rest/operations/files/"+this.get("file_id")+".json";
+                
+                //test
+                this.files.url = this.get("project_id")+"/rest/operations/files/0.json";
+                //this.set({"modelCid" : this.cid});
+            }
+            
+        }, 
+        
+        isItHasChild : function (){
+            return (this.get("isHasChild"));
+        },
+        
+        isItFolder : function(){
+            return (this.get("is_folder"));
+        },
+        
+        isCollapsed : function (){
+            return (this.get("state") === "collapsed");
+        },
+        
+        isExpanded : function(){
+            return (!this.isCollapsed());
+        },
+        
+        collapse : function(){
+            this.set({
+                'state' : 'collapsed'
+            });
+        },
+        
+        expand : function(){
+            this.set({
+                'state' : 'expanded'
+            });
+        }
+        
+        
+    });
+    
+    
+    //Collections *************************************************************
+    
+    window.Projects = Backbone.Collection.extend({
+        //find a way to load the project number
+        model : Project,
+        url : "1/rest/operations/projects.json"
+    });
+    
+    
+    
+    window.Files = Backbone.Collection.extend({
+        model : File
+    });
+    
+    
+    
+    //Views **********************************************************************
+    
+    $(document).ready(function(){
+        
+
+              
+        window.ProjectView = Backbone.View.extend({
+            
+            template : _.template($("#project-template").html()),
+            
+            initialize : function(){
+                _.bindAll(this,'render','expand','collapse','renderFile','btn_clicked');
+                //this.template = _.template($("#project-template").html());
+                this.model.files.bind('reset',this.render);
+            } , 
+            
+            
+            events : {
+                'click .project_btn_expand_collapse' : "btn_clicked"
+            } , 
+            
+            render : function(){
+                //console.log(this.model.cid);
+                $(this.el).html(this.template(this.model.toJSON()));
+                this.model.files.each(this.renderFile);
+                return this ;
+            } , 
+            
+            
+            btn_clicked : function(){
+                //alert(this.model.cid+" "+this.model.get('state'));
+                if(this.model.isCollapsed()){
+                    this.expand();
+                }else {
+                    //this.collapse();
+                }
+            },
+            
+            expand : function (){
+                this.model.files.fetch();
+                this.updateState();
+            } , 
+            
+            collapse : function (){
+              this.model.files.reset();
+              this.updateState();
+            },
+            
+            updateState : function(){
+                if(this.model.isCollapsed()){
+                    this.model.expand();
+                } else {
+                    this.model.collapse();
+                }
+            },
+            
+            
+            renderFile : function (file){
+                var view = new FileView({
+                    model : file , 
+                    id : file.cid , 
+                });
+                
+                this.$("ul").append(view.render().el);
+            }
+            
+        });
+        
+        
+        
+        
+        
+        window.FileView = Backbone.View.extend({
+            
+            template : _.template($("#file-template").html()),
+            tagName : 'li',
+
+           
+            events : {
+                "click" : "btn_clicked"
+            },
+           
+            initialize : function(){
+                _.bindAll(this,'render','expand','collapse','renderFile','btn_clicked');
+                console.log(this.model.cid);
+                //if(this.model.isItHasChild() && this.model.isItFolder()){ //as what we have said before we have to check the server
+                if(this.model.isItFolder()){
+                    this.model.files.bind('reset',this.render);
+                }
+                
+            },
+            
+            
+            render : function(){
+                console.log("ini "+this.model.cid);
+                $(this.el).html(this.template(this.model.toJSON()));
+                this.model.files.each(this.renderFile);
+                return this ;
+            },
+            
+            
+            btn_clicked : function(){
+                alert(this.model.cid+" "+this.model.get('state'));
+                if(this.model.isCollapsed()){
+                    this.expand();
+                }else {
+                    //this.collapse();
+                }
+            },
+            
+            renderFile : function (file){
+                var view = new FileView({
+                    model : file , 
+                    id : file.cid , 
+                });
+                $(this.el).append("<ul></ul>");
+                this.$("ul").append(view.render().el);
+            },
+            
+            
+            expand : function (){
+                this.model.files.fetch();
+                this.updateState();
+            } , 
+            
+            
+            collapse : function (){
+              this.model.files.reset();
+              this.updateState();
+            },
+            
+            
+            updateState : function(){
+                if(this.model.isCollapsed()){
+                    this.model.expand();
+                } else {
+                    this.model.collapse();
+                }
+            }
+            
+            
+        });
+        
+        
+        
+        
+        
+        //run the application *********************************************************************************
+        
+        window.IDEHTML5 = Backbone.Router.extend({
+            
+            routes : {
+                "" : "index", 
+                ":id" : "getProjectID"
+            },
+            
+            
+            initialize: function(){
+
+            },
+            
+            getProjectID : function(id){
+                alert(id);
+            },
+            
+            index : function(){
+                var projects = new Projects();
+                projects.fetch({
+                    success : function(){
+                        var project = projects.at(0);
+                        this.project_view = new ProjectView({model : project});
+                        $("#container").html(this.project_view.render().el);
+                    },
+                    error : function(){
+                        
+                    }
+                }); 
+            }
+        });
+            
+            
+            
+            
+            
+            
+            //run the application
+            
+                window.App = new IDEHTML5();
+               //Backbone.history.start({pushState: true});
+               Backbone.history.start();
+                
+        });
+    
+    
+})(jQuery);

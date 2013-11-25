@@ -1,0 +1,693 @@
+var _app = {};
+
+var tab_counter = 1;
+
+var active_editors = [];
+var active_editors_count = 0 ;
+var main_url = "/html5_ide";
+/*
+if(window.location.hash) {
+  // Fragment exists
+  alert(window.location.hash);
+} else {
+  // Fragment doesn't exist
+  //window.location.hash = "#jdh" ;
+  alert("Dd");
+}
+*/
+//alert(window.location.hash);
+
+_app.base = {
+    
+    _author : "Omar Ahmed Al-Safi" , 
+    _version : "0.1 beta" , 
+    project_id_global : project_id,
+    get_version : function(type){
+        return type;
+    } , 
+    ajax_main_url : main_url+"/server/files_operations" ,
+    ajax_load_file_url : main_url+"/server/load_file" , 
+    ajax_save_file_url : main_url+"/server/save_file",
+    ajax_preview_file : main_url+"/server/preview_file",
+    ajax_load_all_code_bits : main_url+"/server/load_all_code_bits",
+    ajax_code_bit_url : main_url+"/server/load_code_bit/",
+    icons_path : main_url+"/img/"
+    
+    
+}; 
+
+//alert (_app.base.ajax_path);
+
+//alert(_app.base.project_id_global);
+
+
+_app.contextmenu = {
+    
+    open_btn : {
+        "separator_before"  : false,
+        "separator_after"   : false,
+        "label"             : "Open",
+        "action"            : function(obj){
+            var idn = obj.attr("id").split("_")[1] ;
+            file_id = "#"+obj.attr("id");
+            file_name = $(file_id).text();
+             file_type = file_name.split(".")[1];
+            //file_name = obj.data; 
+            //alert(file_name);
+            //var file_name = obj.split('<ins class="jstree-icon">&nbsp;</ins>')[1];
+           _app.utility.initlize_new_tab(idn,file_name,file_type);
+             // _app.utility.open_file(idn);
+        }
+    },
+                
+    preview_btn : {
+         "separator_before"  : false,
+         "separator_after"   : false,
+         "label"             : "Preview",
+         "action"            : function(obj){
+            var idn = obj.attr("id").split("_")[1] ;
+            _app.utility.preview_file(idn);
+         }
+    },
+    
+    edit_btn : {
+        "separator_before"	: true,
+        "icon"				: false,
+        "separator_after"	: true,
+        "label"				: "Edit",
+        "action"			: false,
+        "submenu" : { 
+                "cut" : {
+    				"separator_before"	: false,
+    				"separator_after"	: false,
+    				"label"				: "Cut",
+    				"action"			: function (obj) { this.cut(obj); }
+        				},
+				"copy" : {
+    				"separator_before"	: false,
+    				"icon"				: false,
+    				"separator_after"	: false,
+    				"label"				: "Copy",
+    				"action"			: function (obj) { this.copy(obj); }
+						},
+				"paste" : {
+							"separator_before"	: false,
+							"icon"				: false,
+							"separator_after"	: false,
+							"label"				: "Paste",
+							"action"			: function (obj) { this.paste(obj); }
+						}
+            }
+    } , 
+    
+    rename_btn : {
+        "separator_before"	: false,
+        "separator_after"	: false,
+        "label"				: "Rename",
+        "action"			: function (obj) { this.rename(obj); }
+    } , 
+    
+    remove_btn : {
+        "separator_before"	: false,
+        "icon"				: false,
+        "separator_after"	: false,
+        "label"				: "Delete",
+        "action"			: function (obj) { if(this.is_selected(obj)) { this.remove(); } else { this.remove(obj); } }
+    } , 
+    
+    create_btn : {
+        "separator_before"  : false,
+        "separator_after"   : true,
+        "label"             : "Create",
+        "action"            : false,
+        "submenu" :{
+            "create_file" : {
+                            "seperator_before" : false,
+                            "seperator_after" : false,
+                            "label" : "File",
+                            action : function (obj) {
+                                this.create(obj, "last", {"attr" : {"rel" : "default"}});
+                            }
+                        },
+                        "create_folder" : {
+                            "seperator_before" : false,
+                            "seperator_after" : false,
+                            "label" : "Folder",
+                            action : function (obj) {                               
+                                this.create(obj, "last", {"attr" : { "rel" : "folder"}});
+                            }
+                        }
+            }
+    },
+    
+    
+    save_file_btn : {
+         "separator_before"  : false,
+         "separator_after"   : false,
+         "label"             : "Save",
+         "action"            : function(obj){
+            var idn = obj.attr("id").split("_")[1] ;
+            
+            _app.utility.save_file(idn);
+         }
+    },
+    
+    
+    
+    load_file_menu : function() {
+        return{
+            "open" : this.open_btn ,
+            "preview" : this.preview_btn , 
+            "ccp" : this.edit_btn , 
+            "rename" : this.rename_btn , 
+            "remove" : this.remove_btn
+        }
+    },
+    
+    load_folder_menu : function() {
+        return {
+            "create" : this.create_btn , 
+            "ccp" : this.edit_btn , 
+            "rename" : this.rename_btn ,
+            "remove" : this.remove_btn
+        }
+    },
+    
+    load_drive_menu : function(){
+        return {
+            "create" : this.create_btn , 
+            "edit" : this.edit_btn
+        }
+    }
+    
+    
+    
+}
+
+_app.codebits = {
+    
+    load_all_code_bits : function(handleData){
+        $.ajax({
+            url : _app.base.ajax_load_all_code_bits,
+            dataType: "html" ,
+            success: function(data){
+                handleData(data);
+            }
+        });
+    }, 
+    
+    load_code_bit : function(handleData,code_bit_id){
+        var url = _app.base.ajax_code_bit_url+code_bit_id;
+        $.ajax({
+            url : url,
+            dataType: "html" ,
+            success: function(data){
+                handleData(data);
+            }
+        });
+    }
+}
+
+
+_app.utility = {
+    
+    editor: null,
+    
+    get_project_id : function (){
+        
+    } , 
+    
+    
+    open_editor : function(file_id,file_type){
+        /*
+        tab_counter += 1;
+        $('#tabs').tabs('add', '#d', 'Tab ' + tab_counter);
+        */
+        
+        
+        
+        
+        var textarea = document.getElementById('code_'+file_id); //create new here
+        var uiOptions = { path : main_url+'/js/', searchMode : 'popup' }
+        
+        
+        if(file_type == "js"){
+               var codeMirrorOptions = { 
+                lineNumbers: true,
+                matchBrackets: true,
+                mode : "text/javascript"
+             }
+        } else if(file_type == "css"){
+             var codeMirrorOptions = { 
+                lineNumbers: true,
+                mode : "text/css"
+             }
+        } else {
+            var codeMirrorOptions = { 
+                lineNumbers: true,
+                mode : "text/html", 
+                tabMode: "indent"
+             }
+        } 
+        
+            //then create the editor
+        active_editors[active_editors_count] = new IdeEditor(textarea,uiOptions,codeMirrorOptions);
+        /*
+        active_editors[active_editors_count] = CodeMirror.fromTextArea(document.getElementById("code_"+file_id), {
+            lineNumbers: true,
+            matchBrackets: true,
+    		mode: 'text/javascript'
+          });
+          */
+          active_editors_count++;
+        
+    },
+    
+    
+    open_file : function(file_id,div_id,file_type){
+        var full_url = _app.base.ajax_load_file_url+"/"+_app.base.project_id_global+"/"+file_id+"/";
+        
+        
+            $.ajax({
+              url: full_url,
+              type: "POST",
+              dataType: "html" , 
+              success : function(data){
+                //$("#editor div").remove();
+                //$(".CodeMirror").remove();
+                var editor_text_area = document.createElement("textarea");
+                editor_text_area.id = "code_"+file_id;
+                editor_text_area.name = "code_"+file_id;
+                
+                
+                var editor_div = document.createElement("div");
+                editor_div.className = "editor";
+                editor_div.id = "editor_"+file_id;
+                editor_div.appendChild(editor_text_area);
+
+                document.getElementById(div_id).appendChild(editor_div);
+                
+                document.getElementById('code_'+file_id).innerHTML = data ; 
+                //alert(data);
+                _app.utility.open_editor(file_id,file_type);
+              }
+        });
+      
+        
+        
+        /*
+        xmlhttp.open("GET", "http://localhost/public/7cf727ecba473253df57ead9cf2e47b8/file.html",true);
+
+        xmlhttp.onreadystatechange=function() {
+            alert(full_url);
+          if (xmlhttp.readyState==4) {
+          //alert(xmlhttp.responseText)
+           //document.getElementById("code").value= xmlhttp.responseText;
+           $("#editor div").remove();
+           $(".CodeMirror").remove();
+           $("#code").html(xmlhttp.responseText);
+           //$("#editor").html(data);
+           _app.utility.open_editor();           
+         }
+        xmlhttp.send(null);
+        }
+        */
+    },
+    
+    save_file : function(handleData,file_id,coming_data){
+      var full_url = _app.base.ajax_save_file_url+"/"+_app.base.project_id_global+"/"+file_id+"/";
+      //var data_to_sent = "data="+this.editor.get_value();
+     //var data_to_sent = coming_data;
+      $.ajax({
+              url: full_url,
+              type: "POST",
+              //dataType: "html" , 
+              data : {data : coming_data} , 
+              dataType : "json",
+              success : function(data){
+                //alert(data);
+                 handleData(data);
+              }
+        });
+        
+    },
+    
+    
+    
+    preview_file : function(file_id){
+        var full_url = _app.base.ajax_preview_file+"/"+file_id+"/";
+        $.ajax({
+              url: full_url,
+              type: "POST",
+              dataType: "html" , 
+              success : function(data){
+                var link = main_url+"/public/"+project_hash+"/"+data ; 
+                window.open(link,"_blank");
+              }
+        });
+    },
+    
+    open_preview_window : function(url){
+        
+    }, 
+    
+    
+    initlize_new_tab : function(file_id,file_name,file_type){
+        //check if tab exist 
+        //limit the tabs
+        
+        var exist = false ; 
+        var hash = null ; 
+        $("#tabs ul li a").each(function(index){
+            if($(this).attr("rel") == file_id){
+                exist = true ;
+                hash = $(this).attr("href");
+            }
+        });
+        
+        
+        if(exist){
+            var file_index = hash.split("#tabs-")[1];
+            $("#tabs").tabs("select",file_index);
+            return ;
+        }
+        
+        tab_counter += 1;
+        $('#tabs').tabs('add', '#tabs-'+tab_counter,file_name);
+        
+        var tab_id = '#tabs-'+tab_counter;
+        $("#tabs ul li a").each(function(index){
+            if($(this).attr("href") == tab_id){
+                $(this).attr("rel",file_id);
+                }
+        });
+        
+        
+        _app.utility.open_file(file_id,"tabs-"+tab_counter,file_type);
+        
+    }
+    
+};
+
+
+
+$(function(){
+    $("#left_col").resizable({
+        
+         handles: 'e' ,
+         minWidth : 350,
+         maxWidth : 600
+        
+    });
+    
+    $( "#tabs" ).tabs({
+        closable: true,
+        add: function(e, ui){
+            
+            $('#tabs').tabs('select', '#' + ui.panel.id);
+        }
+    });
+    //_app.codebits.load_menu();
+    
+    //lunch the JSTREE
+    $("#files_tree").bind("before.jstree", function (e, data) {
+		$("#alog").append(data.func + "<br />");
+	})
+	.jstree({ 
+		// List of active plugins
+		"plugins" : [ 
+			"themes","json_data","ui","crrm","cookies","dnd","search","types","hotkeys","contextmenu" 
+		],
+        
+        
+        "themes" : {
+            "theme" : "apple" , 
+            "url" : main_url+"/css/jstree/apple/style.css" ,
+        },
+
+		// I usually configure the plugin that handles the data first
+		// This example uses JSON as it is most common
+		"json_data" : { 
+			// This tree is ajax enabled - as this is most common, and maybe a bit more complex
+			// All the options are almost the same as jQuery's AJAX (read the docs)
+			"ajax" : {
+				// the URL to fetch the data
+				"url" : _app.base.ajax_main_url,
+				// the `data` function is executed in the instance's scope
+				// the parameter is the node being loaded 
+				// (may be -1, 0, or undefined when loading the root nodes)
+				"data" : function (n) { 
+					// the result is fed to the AJAX request `data` option
+                    //here we send the project ID , after that we map it in the server
+					return { 
+						"operation" : "get_children", 
+						"id" : n.attr ? n.attr("id").replace("node_","") : _app.base.project_id_global ,
+                        //"id" : 69 , // if the attr is exist means normal request , else if nothin exist means the tree being loaded first time
+                        "request_type" : n.attr ? "normal_request" : "get_tree_first_load" ,
+                        //"request_type" : "normal_request"  ,
+                        "project_id" : _app.base.project_id_global
+					}; 
+				}
+			}
+		},
+        
+        
+        "contextmenu" : {
+            items : function(node){
+                if(node.attr('rel') == 'default') {
+                    return _app.contextmenu.load_file_menu();
+                } else if(node.attr('rel') == 'folder') {
+                    return _app.contextmenu.load_folder_menu();
+                } else {
+                    return _app.contextmenu.load_drive_menu();
+                }
+            }
+    },
+
+        
+        
+		// Configuring the search plugin
+		"search" : {
+			// As this has been a common question - async search
+			// Same as above - the `ajax` config option is actually jQuery's AJAX object
+			"ajax" : {
+				"url" : _app.base.ajax_main_url,
+				// You get the search string as a parameter
+				"data" : function (str) {
+					return { 
+						"operation" : "search", 
+						"search_str" : str 
+					}; 
+				}
+			}
+		},
+		// Using types - most of the time this is an overkill
+		// read the docs carefully to decide whether you need types
+		"types" : {
+			// I set both options to -2, as I do not need depth and children count checking
+			// Those two checks may slow jstree a lot, so use only when needed
+			"max_depth" : -2,
+			"max_children" : -2,
+			// I want only `drive` nodes to be root nodes 
+			// This will prevent moving or creating any other type as a root node
+			"valid_children" : [ "drive" ],
+			"types" : {
+				// The default type
+				"default" : {
+					// I want this type to have no children (so only leaf nodes)
+					// In my case - those are files
+					"valid_children" : "none",
+					// If we specify an icon for the default type it WILL OVERRIDE the theme icons
+					"icon" : {
+						"image" : _app.base.icons_path+"file.png"
+					}
+				},
+				// The `folder` type
+				"folder" : {
+					// can have files and other folders inside of it, but NOT `drive` nodes
+					"valid_children" : [ "default", "folder" ],
+					"icon" : {
+						"image" : _app.base.icons_path+"folder.png"
+					}
+				},
+				// The `drive` nodes 
+				"drive" : {
+					// can have files and folders inside, but NOT other `drive` nodes
+					"valid_children" : [ "default", "folder" ],
+					"icon" : {
+						"image" : _app.base.icons_path+"root.png"
+					},
+					// those prevent the functions with the same name to be used on `drive` nodes
+					// internally the `before` event is used
+					"start_drag" : false,
+					"move_node" : false,
+					"delete_node" : false,
+					"remove" : false , 
+                    "rename" : false 
+				},
+                
+                "project" : {
+                    "valid_children" : [ "default", "folder" ],
+					"icon" : {
+						"image" : _app.base.icons_path+"root.png"
+					},
+					// those prevent the functions with the same name to be used on `drive` nodes
+					// internally the `before` event is used
+					"start_drag" : false,
+					"move_node" : false,
+					"delete_node" : false,
+					"remove" : false , 
+                    "rename" : false 
+                }
+			}
+		},
+		// UI & core - the nodes to initially select and open will be overwritten by the cookie plugin
+
+		// the UI plugin - it handles selecting/deselecting/hovering nodes
+		"ui" : {
+			// this makes the node with ID node_4 selected onload
+			"initially_select" : [ "node_4" ]
+		},
+		// the core plugin - not many options here
+		"core" : { 
+			// just open those two nodes up
+			// as this is an AJAX enabled tree, both will be downloaded from the server
+			"initially_open" : [ "node_69" , "node_3" ] 
+		}
+	})
+	.bind("create.jstree", function (e, data) {
+		$.post(
+			_app.base.ajax_main_url, 
+			{ 
+				"operation" : "create_node", 
+				"id" : data.rslt.parent.attr("id").replace("node_",""), 
+				"position" : data.rslt.position,
+				"title" : data.rslt.name,
+				"type" : data.rslt.obj.attr("rel"),
+                "project_id" : _app.base.project_id_global 
+			}, 
+			function (r) {
+				if(r.status) {
+					$(data.rslt.obj).attr("id", "node_" + r.id);
+				}
+				else {
+					$.jstree.rollback(data.rlbk);
+				}
+			}
+		);
+	})
+	.bind("remove.jstree", function (e, data) {
+		data.rslt.obj.each(function () {
+			$.ajax({
+				async : false,
+				type: 'POST',
+				url: _app.base.ajax_main_url,
+				data : { 
+					"operation" : "remove_node", 
+					"id" : this.id.replace("node_",""),
+                    "project_id" : _app.base.project_id_global 
+				}, 
+				success : function (r) {
+				    //alert(r.status);
+					if(!r.status) {
+						data.inst.refresh();
+					}
+				}
+			});
+		});
+	})
+	.bind("rename.jstree", function (e, data) {
+		$.post(
+			_app.base.ajax_main_url, 
+			{ 
+				"operation" : "rename_node", 
+				"id" : data.rslt.obj.attr("id").replace("node_",""),
+				"title" : data.rslt.new_name , 
+                "project_id" : _app.base.project_id_global 
+			}, 
+			function (r) {
+				if(!r.status) {
+					$.jstree.rollback(data.rlbk);
+				}
+			}
+		);
+	})
+	.bind("move_node.jstree", function (e, data) {
+		data.rslt.o.each(function (i) {
+		  //alert(data.rslt.np.attr("id").replace("node_",""));
+			$.ajax({
+				async : false,
+				type: 'POST',
+				url: _app.base.ajax_main_url,
+				data : { 
+					"operation" : "move_node", 
+					"id" : $(this).attr("id").replace("node_",""), 
+					"ref" : data.rslt.cr === -1 ? 1 : data.rslt.np.attr("id").replace("node_",""),  //to folder
+					"position" : data.rslt.cp + i,
+					"title" : data.rslt.name,
+					"copy" : data.rslt.cy ? 1 : 0,
+                    "project_id" : _app.base.project_id_global 
+				},
+				success : function (r) {
+					if(!r.status) {
+						$.jstree.rollback(data.rlbk);
+					}
+					else {
+						$(data.rslt.oc).attr("id", "node_" + r.id);
+						if(data.rslt.cy && $(data.rslt.oc).children("UL").length) {
+							data.inst.refresh(data.inst._get_parent(data.rslt.oc));
+						}
+					}
+					$("#analyze").click();
+				}
+			});
+		});
+	}).delegate("a","dblclick", function(e) {
+        var idn = $(this).parent().attr("id").split("_")[1];
+        var type = $(this).parent().attr("rel") ; 
+        var file_name = $(this).html().split('<ins class="jstree-icon">&nbsp;</ins>')[1];
+        var file_type = file_name.split(".")[1];
+        if(type == "default") {
+            //ajax request to get the data 
+            //_app.utility.open_file(idn);
+            //var editor = CodeMirror.fromTextArea(document.getElementById("code"), {mode: "text/html", tabMode: "indent"});
+            /*
+            var textarea = document.getElementById('code');
+            var uiOptions = { path : '/js/', searchMode : 'popup' }
+            var codeMirrorOptions = { mode: "htmlmixed" }
+            
+            //then create the editor
+            var editor = new CodeMirrorUI(textarea,uiOptions,codeMirrorOptions);	
+            */
+            /*
+            _app.utility.open_file(idn);
+            */
+            _app.utility.initlize_new_tab(idn,file_name,file_type);
+        }
+        
+ });
+
+    
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// DOM *****
+
